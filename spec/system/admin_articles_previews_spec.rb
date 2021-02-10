@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "AdminArticles", type: :system do
-  let(:admin_user) { create(:user) }
+RSpec.describe "AdminArticlesPreviews", type: :system do
+  let(:admin_user) { create(:user, :admin) }
 
-  describe '画像投稿' do
-    context '画像をアップロードしない' do
-      it 'プレビューが表示される' do
+  describe '記事作成画面で画像ブロックを追加' do
+    context '画像を添付せずにプレビューを閲覧' do
+      it 'プレビューが正常に表示される' do
         login_as(admin_user)
         click_link '記事'
         expect(current_path).to eq admin_articles_path
