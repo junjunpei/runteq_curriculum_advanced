@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "AdminTags", type: :system do
   let(:admin_user) { create(:user, :admin) }
-  before { login_as(admin_user) }
+  before do
+    login_as(admin_user)
+  end
 
   describe 'タグ一覧ページ' do
     it 'Homeのパンくずが正常に作動する' do
