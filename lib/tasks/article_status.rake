@@ -3,7 +3,7 @@ namespace :article_status do
   task article_status_change: :environment do
     Article.where(state: 'publish_wait')find_each do |article|
       if article.published_at <= Time.current
-        article.state = 'published'
+        article.state = :published
       end
     end
   end

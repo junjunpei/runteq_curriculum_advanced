@@ -35,6 +35,15 @@ class Admin::ArticlesController < ApplicationController
     authorize(@article)
 
     if @article.update(article_params)
+      if @article.state != 'draft'
+        if @article.published_at > Time.current
+          @article.state = :publish_wait
+          @article.save
+        elsif @article.published_at <= Time.current
+          @article.state = :published
+          @article.save
+        end
+      end
       flash[:notice] = '更新しました'
       redirect_to edit_admin_article_path(@article.uuid)
     else
