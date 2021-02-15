@@ -47,7 +47,7 @@ class Article < ApplicationRecord
   validates :state, presence: true
   validates :eye_catch, attachment: { purge: true, content_type: %r{\Aimage/(png|jpeg)\Z}, maximum: 10_485_760 }
 
-  with_options if: -> { :published? || :publish_wait? } do
+  with_options if: :published? do
     validates :slug, slug_format: true, presence: true, length: { maximum: 255 }
     validates :published_at, presence: true
     validates :category_id, presence: true
