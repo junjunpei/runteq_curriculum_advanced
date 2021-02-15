@@ -4,6 +4,7 @@ namespace :article_status do
     Article.where(state: 'publish_wait').find_each do |article|
       if article.published_at <= Time.current
         article.state = :published
+        article.save
       end
     end
   end
