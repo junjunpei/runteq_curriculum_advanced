@@ -57,8 +57,8 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  def render_403(e)
-    @exception = e
-    render file: Rails.root.join('public', '403.html'), status: 403, layout: false
+  def render_403(error)
+    @exception = error
+    render file: Rails.root.join('public/403.html'), status: :forbidden, layout: false
   end
 end
