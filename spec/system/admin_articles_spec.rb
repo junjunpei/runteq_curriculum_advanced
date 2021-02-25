@@ -55,6 +55,33 @@ RSpec.describe "AdminArticles", type: :system do
       end
     end
 
+    context 'アイキャッチ幅を99にして「更新する」を押す' do
+      it '「100以上の値にしてください」というバリデーションエラーが表示されること' do
+        visit edit_admin_article_path(past_article.uuid)
+        fill_in 'アイキャッチ幅', with: 99
+        click_on '更新する'
+        expect(page).to have_content('100以上の値にしてください')
+      end
+    end
+
+    context 'アイキャッチ幅を701にして「更新する」を押す' do
+      it '「700以下の値にしてください」というバリデーションエラーが表示されること' do
+        visit edit_admin_article_path(past_article.uuid)
+        fill_in 'アイキャッチ幅', with: 701
+        click_on '更新する'
+        expect(page).to have_content('700以下の値にしてください')
+      end
+    end
+
+    context 'アイキャッチ幅を400にして「更新する」を押し、プレビューを押す' do
+      it '更新が成功すること' do
+        visit edit_admin_article_path(past_article.uuid)
+        fill_in 'アイキャッチ幅', with: 400
+        click_on '更新する'
+        expect(page).to have_content('更新しました')
+      end
+    end
+
     describe '検索機能' do
       let(:article_with_author) { create(:article, :with_author, author_name: '伊藤') }
       let(:article_with_another_author) { create(:article, :with_author, author_name: '鈴木') }
