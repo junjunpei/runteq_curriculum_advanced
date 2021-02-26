@@ -45,6 +45,8 @@ ja:
         tag: 'タグ'
         author: '著者'
         published_at: '公開日'
+        eyecatch_align: '位置'
+        eyecatch_width: 'アイキャッチ幅'
     errors:
       models:
         user:
@@ -56,5 +58,3 @@ ja:
             password_confirmation:
               blank: 'パスワードを再入力してください'
               confirmation: 'パスワードが異なります'
-
-
