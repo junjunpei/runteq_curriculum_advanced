@@ -37,30 +37,4 @@ RSpec.describe "AdminArticlesPreviews", type: :system do
       end
     end
   end
-
-  describe '記事作成画面でアイキャッチを添付' do
-    context 'アイキャッチ幅を400にしてプレビューを閲覧' do
-      it 'プレビューに表示されているアイキャッチの幅が400になっていること' do
-        visit edit_admin_article_path(article.uuid)
-        attach_file 'article_eye_catch', "#{Rails.root}/public/images/eye_catch.jpg"
-        fill_in 'アイキャッチ幅', with: 400
-        click_on '更新する'
-        click_link 'プレビュー'
-        switch_to_window(windows.last)
-        expect(page).to have_selector("img[width='400']")
-      end
-    end
-
-    context 'アイキャッチの位置を右寄せにする' do
-      it 'プレビューに表示されているアイキャッチの位置が右寄せになっていること' do
-        visit edit_admin_article_path(article.uuid)
-        attach_file 'アイキャッチ', "#{Rails.root}/public/images/eye_catch.jpg"
-        choose '右寄せ'
-        click_on '更新する'
-        click_link 'プレビュー'
-        switch_to_window(windows.last)
-        expect(page).to have_selector("section[class='eye_catch text-right']")
-      end
-    end
-  end
 end
