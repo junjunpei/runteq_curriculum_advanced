@@ -16,6 +16,7 @@
         = image_tag @site.favicon_url('32x32')
         br
         br
+        = link_to '削除', delete_image_attachment_admin_site_path(id: @site.favicon.id), method: :delete, class: 'btn btn-danger'
 
       = f.input :og_image, as: :file, hint: 'JPEG/PNG (1200x630)'
 
@@ -23,6 +24,16 @@
         = image_tag @site.og_image_url(:ogp), class: 'img-responsive'
         br
         br
+        = link_to '削除', delete_image_attachment_admin_site_path(id: @site.og_image.id), method: :delete, class: 'btn btn-danger'
+
+      = f.input :main_images, as: :file, hint: 'JPEG/PNG (1200x400)', input_html: { multiple: true }
+
+      - if @site.main_images.attached?
+        .main_images_box
+          - @site.main_images.each do |main_image|
+            .main_image
+              = image_tag main_image.variant(resize: '300x100').processed
+              = link_to '削除', delete_image_attachment_admin_site_path(id: main_image.id), method: :delete, class: 'btn btn-danger'
 
     .box-footer
       = f.button :submit, '保存', class: %w[btn btn-primary]

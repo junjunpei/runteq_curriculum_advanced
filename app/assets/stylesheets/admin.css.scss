@@ -30,3 +30,17 @@
 .box + .insert-block {
   margin-top: -20px;
 }
+
+.main_images_box {
+  display: flex;
+}
+
+.main_images_box .main_image {
+  text-align: center;
+  padding: 1rem;
+}
+
+.main_images_box .main_image img {
+  display: block;
+  margin-bottom: 1rem;
+}

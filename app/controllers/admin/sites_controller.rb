@@ -17,10 +17,16 @@ class Admin::SitesController < ApplicationController
     end
   end
 
+  def delete_image_attachment
+    image = ActiveStorage::Attachment.find(params[:id])
+    image.purge
+    redirect_to edit_admin_site_path
+  end
+
   private
 
   def site_params
-    params.require(:site).permit(:name, :subtitle, :description, :favicon, :og_image)
+    params.require(:site).permit(:name, :subtitle, :description, :favicon, :og_image, main_images: [])
   end
 
   def set_site

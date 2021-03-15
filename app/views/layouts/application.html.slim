@@ -4,6 +4,12 @@ html
     = render 'layouts/meta_tags'
     = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css'
     = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'https://unpkg.com/swiper/swiper-bundle.min.css'
+    = javascript_include_tag 'https://unpkg.com/swiper/swiper-bundle.min.js'
+    = javascript_include_tag 'https://code.jquery.com/jquery-3.2.1.slim.min.js'
+    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'
+    = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js'
+    = javascript_include_tag 'application'
     = yield 'stylesheets'
   body
     = render 'layouts/header'
@@ -18,8 +24,3 @@ html
       - if categories?
         .section.container.categories.my-5
           = render 'shared/categories', categories: Category.all
-
-    = javascript_include_tag 'https://code.jquery.com/jquery-3.2.1.slim.min.js'
-    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'
-    = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js'
-    = javascript_include_tag 'application'
