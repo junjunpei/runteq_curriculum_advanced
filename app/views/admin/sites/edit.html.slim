@@ -17,6 +17,8 @@
         br
         br
         = link_to '削除', delete_image_attachment_admin_site_path(id: @site.favicon.id), method: :delete, class: 'btn btn-danger'
+        br
+        br
 
       = f.input :og_image, as: :file, hint: 'JPEG/PNG (1200x630)'
 
@@ -25,7 +27,8 @@
         br
         br
         = link_to '削除', delete_image_attachment_admin_site_path(id: @site.og_image.id), method: :delete, class: 'btn btn-danger'
-
+        br
+        br
       = f.input :main_images, as: :file, hint: 'JPEG/PNG (1200x400)', input_html: { multiple: true }
 
       - if @site.main_images.attached?
