@@ -10,3 +10,7 @@ set :output, "#{Rails.root}/log/cron.log"
 every :hour do
   rake 'article_state:article_state_change'
 end
+
+every :day, at: '9:00 am' do
+  runner 'ArticleMailer.report_summary'
+end
