@@ -8,4 +8,8 @@ RSpec.describe "ArticleMailers", type: :system do
     expect(mail.to).to eq(['admin@example.com'])
     expect(mail.from).to eq(['from@example.com'])
   end
+
+  it 'メールの内容が表示されていること' do
+    expect(mail.body).to match('公開')
+  end
 end
